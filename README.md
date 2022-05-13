@@ -1,0 +1,1 @@
+# kata-js-test-1
