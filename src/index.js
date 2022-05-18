@@ -2,9 +2,15 @@ const searchInput = document.querySelector(".search-input");
 const searchResults = document.querySelector(".search-results");
 const savedRepos = document.querySelector(".saved-repos");
 
+const createElement = (elemType, className) => {
+       const element = document.createElement(elemType);
+   element.classList.add(className);
+
+   return element;
+}
+
 const createSearchResultNode = (dataset) => {
-    const repoNode = document.createElement('div');
-    repoNode.className = 'search-result';
+    const repoNode = createElement('div', 'search-result');
     repoNode.innerHTML = `${dataset.name}`;
     //заполенние dataset
     repoNode.dataset.name = dataset.name;
@@ -19,22 +25,16 @@ const highlight = (node) => {
 }
 */
 const appendInSavedRepos = (repoNode) => {
-    const savedRepoNode = document.createElement('div');
-    savedRepoNode.className = 'saved-repo';
+    const savedRepoNode = createElement('div', 'saved-repo');
 
-    const repoInfoWrapper = document.createElement('div');
-    repoInfoWrapper.className = 'repo-wrapper';
-    const button = document.createElement('button');
-    button.className = 'btn'
+    const repoInfoWrapper = createElement('div', 'repo-wrapper');
+    const button = createElement('button', 'btn');
     // Заполнение repoInfoWrapper
-    const repoName = document.createElement('span');
-    repoName.className = 'name';
+    const repoName = createElement('span', 'name');
     repoName.innerHTML = `Name: ${repoNode.dataset.name}`;
-    const repoOwner = document.createElement('span');
-    repoOwner.className = 'owner';
+    const repoOwner = createElement('span', 'owner');
     repoOwner.innerHTML = `Owner: ${repoNode.dataset.owner}`;
-    const repoStars = document.createElement('span');
-    repoStars.className = 'stars';
+    const repoStars = createElement('span', 'stars');
     repoStars.innerHTML = `Stars: ${repoNode.dataset.stars}`;
 
     repoInfoWrapper.append(repoName, repoOwner, repoStars);
